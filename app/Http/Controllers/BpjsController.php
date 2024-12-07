@@ -11,10 +11,10 @@ class BpjsController extends Controller
     /**
      * Base URL for the webservice endpoint.
      */
-    private $baseEndpoint = 'http://103.175.202.237/webservice/registrasionline/bpjs';
+    private $baseEndpoint = 'https://simgos.tanahbumbukab.go.id/webservice/registrasionline/bpjs';
 
     /**
-     * Hospital GPS coordinates (example coordinates).
+     * Hospital GPS coordinates.
      */
     private $hospitalLat =  -3.522521513090456;
     private $hospitalLng = 115.95749914249028;
@@ -34,13 +34,11 @@ class BpjsController extends Controller
         if ($response->successful()) {
             $data = $response->json();
 
-            // Check if the token exists in the response
             if (isset($data['response']['token'])) {
                 return $data['response']['token'];
             }
         }
 
-        // Return null if the token is not retrieved
         return null;
     }
 
@@ -53,7 +51,6 @@ class BpjsController extends Controller
         $latitude = $request->input('latitude');
         $longitude = $request->input('longitude');
 
-        // Validate GPS location
         if (!$this->validateLocation($latitude, $longitude)) {
             return response()->json([
                 'metadata' => [
@@ -63,7 +60,6 @@ class BpjsController extends Controller
             ]);
         }
 
-        // Fetch the token
         $token = $this->getToken();
 
         if (!$token) {
@@ -75,7 +71,6 @@ class BpjsController extends Controller
             ]);
         }
 
-        // Check if the kodebooking is valid
         $checkAntrianResponse = $this->checkKodebookingAntrian($token, $kodebooking);
 
         if (!$checkAntrianResponse['valid']) {
@@ -99,12 +94,10 @@ class BpjsController extends Controller
                         'waktu' => $waktu,
                     ]);
 
-            // Check if the request was successful
             if ($response->successful()) {
                 return $response->json();
             }
 
-            // If the response is not successful, return the status and error message
             return response()->json([
                 'metadata' => [
                     'code' => $response->status(),
@@ -172,15 +165,15 @@ class BpjsController extends Controller
 
         Log::info("Calculated distance: {$distance} km");
 
-        return $distance <= $this->allowedRadius / 1000; // Convert meters to kilometers
+        return $distance <= $this->allowedRadius / 1000;
     }
 
     /**
-     * Calculate distance between two coordinates using the Haversine formula.
+     * Calculate distance between two coordinates.
      */
     private function calculateDistance($lat1, $lng1, $lat2, $lng2)
     {
-        $earthRadius = 6371; // Earth's radius in kilometers
+        $earthRadius = 6371;
 
         $latDelta = deg2rad($lat2 - $lat1);
         $lngDelta = deg2rad($lng2 - $lng1);
