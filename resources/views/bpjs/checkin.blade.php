@@ -87,37 +87,6 @@
                 font-size: 12px;
             }
         }
-
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #8e2de2, #4a00e0);
-            background-size: 200% 200%;
-            animation: gradientAnimation 10s ease infinite;
-            transition: background 2s ease;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        body:hover {
-            background: linear-gradient(135deg, #22c1c3, #fdbb2d);
-            animation: none;
-        }
     </style>
 </head>
 
