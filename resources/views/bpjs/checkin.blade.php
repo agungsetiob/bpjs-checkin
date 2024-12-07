@@ -13,13 +13,20 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
         }
 
         .card {
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            color: #000;
         }
 
         .card-header {
@@ -60,7 +67,6 @@
         }
 
         .loading-spinner {
-            /* display: none; */
             margin-right: 10px;
         }
 
@@ -91,8 +97,7 @@
 </head>
 
 <body>
-
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="card">
@@ -100,24 +105,16 @@
                         <h3>BPJS Check-In</h3>
                     </div>
                     <div class="card-body">
-                        <form id="checkinForm">
-                            @csrf
-                            <div class="mb-4">
-                                <label for="kodebooking" class="form-label">Kode Booking</label>
-                                <input type="text" id="kodebooking" name="kodebooking" class="form-control"
-                                    placeholder="Masukkan kode booking..." required>
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submitButton">
-                                <i class="fas fa-spinner fa-spin fa-xl loading-spinner d-none"></i>
-                                Submit
-                            </button>
+                        <form id="checkinForm"> @csrf <div class="mb-4"> <label for="kodebooking"
+                                    class="form-label">Kode Booking</label> <input type="text" id="kodebooking"
+                                    name="kodebooking" class="form-control" placeholder="Masukkan kode booking..."
+                                    required> </div> <button type="submit" class="btn btn-primary" id="submitButton"> <i
+                                    class="fas fa-spinner fa-spin fa-xl loading-spinner d-none"></i> Submit </button>
                         </form>
                     </div>
                 </div>
-                <div class="text-center mt-3">
-                    <small class="footer-text">© 2024 BPJS Integration. Built with ❤️ by <a href="#">Agung
-                            Setio</a>.</small>
-                </div>
+                <div class="text-center mt-3"> <small class="footer-text">© 2024 BPJS Integration. Built with ❤️ by <a
+                            href="#">Agung Setio</a>.</small> </div>
             </div>
         </div>
     </div>
