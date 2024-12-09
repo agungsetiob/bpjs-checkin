@@ -26,8 +26,8 @@ class BpjsController extends Controller
     public function getToken()
     {
         $response = Http::withHeaders([
-            'x-username' => '9990',
-            'x-password' => 'JHMD1R8PQ8',
+            'x-username' => '', //username dr tabel signature
+            'x-password' => '', //password
             'Accept' => 'application/json',
         ])->get("{$this->baseEndpoint}/getToken");
 
