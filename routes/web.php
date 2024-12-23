@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BpjsController;
+use App\Http\Controllers\ControlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,7 @@ use App\Http\Controllers\BpjsController;
 Route::view('/welcome', 'welcome');
 Route::view('/', 'bpjs.checkin');
 Route::post('/check-in', [BpjsController::class, 'checkIn']);
+
+Route::get('/controls', [ControlController::class, 'index'])->name('controls.index');
+Route::get('/controls/list', [ControlController::class, 'list'])->name('controls.list');
+Route::get('/cetak-surat-kontrol', [ControlController::class, 'cetakSuratKontrol'])->name('cetakSuratKontrol');
