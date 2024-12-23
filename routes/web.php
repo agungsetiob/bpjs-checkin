@@ -15,7 +15,6 @@ use App\Http\Controllers\ControlController;
 |
 */
 
-Route::view('/welcome', 'welcome');
 Route::view('/', 'bpjs.checkin');
 Route::post('/check-in', [BpjsController::class, 'checkIn']);
 
